@@ -48,8 +48,8 @@ class Record
         $this->name           = $xml->name->__toString();
         $this->isPublished    = $xml->published->__toString() === 'true';
         $this->state          = $xml->state->__toString();
-        $this->startTime      = (float) $xml->startTime->__toString();
-        $this->endTime        = (float) $xml->endTime->__toString();
+        $this->startTime      = (int) $xml->startTime->__toString();
+        $this->endTime        = (int) $xml->endTime->__toString();
         $this->participants   = (int) $xml->participants->__toString();
         $this->playbackType   = $xml->playback->format->type->__toString();
         $this->playbackUrl    = $xml->playback->format->url->__toString();
@@ -101,7 +101,7 @@ class Record
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getStartTime()
     {
@@ -109,7 +109,7 @@ class Record
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getEndTime()
     {
