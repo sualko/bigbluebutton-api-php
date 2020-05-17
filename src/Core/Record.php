@@ -31,6 +31,7 @@ class Record
     private $state;
     private $startTime;
     private $endTime;
+    private $participants;
     private $playbackType;
     private $playbackUrl;
     private $playbackLength;
@@ -49,6 +50,7 @@ class Record
         $this->state          = $xml->state->__toString();
         $this->startTime      = (float) $xml->startTime->__toString();
         $this->endTime        = (float) $xml->endTime->__toString();
+        $this->participants   = (int) $xml->participants->__toString();
         $this->playbackType   = $xml->playback->format->type->__toString();
         $this->playbackUrl    = $xml->playback->format->url->__toString();
         $this->playbackLength = (int) $xml->playback->format->length->__toString();
@@ -112,6 +114,14 @@ class Record
     public function getEndTime()
     {
         return $this->endTime;
+    }
+
+    /**
+     * @return int Number of participants
+     */
+    public function getParticipantCount()
+    {
+        return $this->participants;
     }
 
     /**
